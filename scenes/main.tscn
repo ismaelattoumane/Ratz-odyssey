@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://djx0lncupwlhta"]
+
+[sub_resource type="GDScript" id="GDScript_amd6q"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	print(\"Welcome to Ratz-Odyssey!\")
+"
+
+[node name="Main" type="Node2D"]
+script = SubResource("GDScript_amd6q")
