@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Ratz-Odyssey"
 config/description="Projet de jeu RPG 2D / 2.5D en pixel-art développé par le Club Informatique"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://doha0dhwr05ck"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
