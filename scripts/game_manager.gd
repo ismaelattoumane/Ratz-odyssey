@@ -1,16 +1,13 @@
 extends Node
-
 class_name GameManager
 
 static var instance: GameManager
 
-var current_scene: Node
-var player: Player
+var mode: String = "solo"  # "solo" ou "multi"
 
 func _ready() -> void:
 	if instance == null:
 		instance = self
-		set_multiplayer_authority(1)
 	else:
 		queue_free()
 
