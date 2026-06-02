@@ -1,10 +1,8 @@
 extends Control
 
-class_name MainMenu
-
-@onready var solo_button = $VBoxContainer/SoloButton
-@onready var multi_button = $VBoxContainer/MultiButton
-@onready var quit_button = $VBoxContainer/QuitButton
+@onready var solo_button = $VBox/SoloButton
+@onready var multi_button = $VBox/MultiButton
+@onready var quit_button = $VBox/QuitButton
 
 func _ready():
 	solo_button.pressed.connect(_on_solo_pressed)
