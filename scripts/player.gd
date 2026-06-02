@@ -9,14 +9,7 @@ var player_id: int = 1  # 1 pour joueur 1 (clavier), 2 pour joueur 2 (manette)
 var input_axis: Vector2 = Vector2.ZERO
 var current_direction: Vector2 = Vector2.DOWN
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var collision_shape = $CollisionShape2D
-
 var in_dialogue: bool = false
-
-func _ready():
-	if animated_sprite == null:
-		push_error("AnimatedSprite2D non trouvé pour le joueur ", player_id)
 
 func _physics_process(delta):
 	if in_dialogue:
@@ -25,7 +18,6 @@ func _physics_process(delta):
 	
 	_handle_input()
 	_apply_movement(delta)
-	_update_animation()
 	move_and_slide()
 
 func _handle_input():
@@ -49,19 +41,6 @@ func _apply_movement(delta):
 		current_direction = input_axis
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, acceleration * delta)
-
-func _update_animation():
-	if animated_sprite == null:
-		return
-	
-	if velocity.length() > 0:
-		# Jouer l'animation de marche
-		if animated_sprite.animation != "walk":
-			animated_sprite.play("walk")
-	else:
-		# Jouer l'animation idle
-		if animated_sprite.animation != "idle":
-			animated_sprite.play("idle")
 
 func set_in_dialogue(value: bool):
 	in_dialogue = value

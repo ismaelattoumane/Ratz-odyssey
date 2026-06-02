@@ -2,19 +2,16 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd"]
 
-[sub_resource type="CapsuleShape2D" id="shape_7hkxw"]
+[sub_resource type="CapsuleShape2D" id="shape_player"]
 radius = 8.0
 height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("player.gd")
-speed = 200.0
-acceleration = 1500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0)
-shape = SubResource("shape_7hkxw")
+shape = SubResource("shape_player")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = preload("res://assets/sprites/player_sprites.tres")
-animation = "idle"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.8, 0.6, 1)
+

@@ -7,7 +7,6 @@ var player2: Player
 var camera: Camera2D
 var dialogue_system: DialogueSystem
 
-@onready var tilemap = $TileMap
 @onready var npcs_container = $NPCs
 @onready var dialogue_ui = $DialogueUI
 
@@ -38,17 +37,19 @@ func _setup_camera():
 	camera.set_physics_process(true)
 	
 	if GameManager.game_mode == "solo":
-		camera.global_position = player1.global_position
+		if player1 != null:
+			camera.global_position = player1.global_position
 	else:
 		# En multijoueur, la caméra suit les deux joueurs
-		var center = (player1.global_position + player2.global_position) / 2
-		camera.global_position = center
+		if player1 != null and player2 != null:
+			var center = (player1.global_position + player2.global_position) / 2
+			camera.global_position = center
 
 func _process(_delta):
 	if camera != null:
 		if GameManager.game_mode == "solo" and player1 != null:
 			camera.global_position = player1.global_position.lerp(camera.global_position, 0.1)
-		elif player2 != null:
+		elif player2 != null and player1 != null:
 			var center = (player1.global_position + player2.global_position) / 2
 			camera.global_position = center.lerp(camera.global_position, 0.1)
 

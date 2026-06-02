@@ -6,9 +6,6 @@
 [node name="MainScene" type="Node2D"]
 script = ExtResource("main.gd")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = preload("res://assets/maps/tileset.tres")
-
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="DialogueUI" type="Control" parent="."]
@@ -16,6 +13,7 @@ anchors_left = 0.0
 anchors_top = 0.0
 anchors_right = 1.0
 anchors_bottom = 1.0
+layout_mode = 1
 script = ExtResource("dialogue_ui.gd")
 
 [node name="PanelContainer" type="PanelContainer" parent="DialogueUI"]

@@ -1,7 +1,6 @@
 extends Node
 
 # Singleton pour gérer l'état global du jeu
-class_name GameManager
 
 signal game_mode_changed(mode: String)
 
