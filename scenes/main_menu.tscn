@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ces41xh53hwyl"]
+
+[ext_resource type="Script" uid="uid://dxuot8kw2nrkb" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node2D" unique_id=2118642295]
+script = ExtResource("1_l6cm7")
+
+[node name="Label" type="Label" parent="." unique_id=518871021]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "RATZ ODYSSEY"
+
+[node name="Solo" type="Button" parent="." unique_id=1002743389]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Solo"
+
+[node name="Multi" type="Button" parent="." unique_id=1510332166]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Multi"
+
+[connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
+[connection signal="pressed" from="Multi" to="." method="_on_multi_pressed"]
