@@ -1,2 +1,2 @@
-res://scripts/player.gd
-res://scenes/main.tscn
+res://scripts/dialogue_ui.gd
+res://scripts/main.gd

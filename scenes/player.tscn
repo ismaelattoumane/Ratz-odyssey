@@ -1,17 +1,20 @@
-[gd_scene format=3 uid="uid://blc3rgjgkf430"]
+[gd_scene load_steps=3 format=3 uid="uid://bu8p5qsdqbj74"]
 
-[ext_resource type="Script" uid="uid://c7wldcm873xah" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://br6e5c8wekrrf" path="res://icon.svg" id="2_qhqgy"]
+[ext_resource type="Script" path="res://scripts/player.gd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+[sub_resource type="CapsuleShape2D" id="shape_7hkxw"]
+radius = 8.0
+height = 20.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1326152373]
-script = ExtResource("1_g2els")
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("player.gd")
+speed = 200.0
+acceleration = 1500.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=426932371]
-texture = ExtResource("2_qhqgy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0)
+shape = SubResource("shape_7hkxw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893466679]
-shape = SubResource("RectangleShape2D_jyhfs")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=907011573]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = preload("res://assets/sprites/player_sprites.tres")
+animation = "idle"

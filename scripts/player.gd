@@ -1,31 +1,69 @@
 extends CharacterBody2D
+
 class_name Player
 
-const SPEED = 200.0
-const ACCELERATION = 1200.0
-const FRICTION = 800.0
+@export var speed: float = 200.0
+@export var acceleration: float = 1500.0
 
-@export var device_id: int = -1  # -1 = clavier, 0+ = manette
+var player_id: int = 1  # 1 pour joueur 1 (clavier), 2 pour joueur 2 (manette)
+var input_axis: Vector2 = Vector2.ZERO
+var current_direction: Vector2 = Vector2.DOWN
 
-var _velocity: Vector2 = Vector2.ZERO
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var collision_shape = $CollisionShape2D
 
-func _physics_process(delta: float) -> void:
-	var input_vector: Vector2 = Vector2.ZERO
+var in_dialogue: bool = false
 
-	if device_id == -1:
-		input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	else:
-		input_vector = Vector2(
-			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_X),
-			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_Y)
-		)
-		if input_vector.length() < 0.2:
-			input_vector = Vector2.ZERO
+func _ready():
+	if animated_sprite == null:
+		push_error("AnimatedSprite2D non trouvé pour le joueur ", player_id)
 
-	if input_vector != Vector2.ZERO:
-		_velocity = _velocity.move_toward(input_vector.normalized() * SPEED, ACCELERATION * delta)
-	else:
-		_velocity = _velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-
-	velocity = _velocity
+func _physics_process(delta):
+	if in_dialogue:
+		velocity = Vector2.ZERO
+		return
+	
+	_handle_input()
+	_apply_movement(delta)
+	_update_animation()
 	move_and_slide()
+
+func _handle_input():
+	input_axis = Vector2.ZERO
+	
+	if player_id == 1:
+		# Joueur 1: Clavier
+		input_axis.x = Input.get_axis("ui_left", "ui_right")
+		input_axis.y = Input.get_axis("ui_up", "ui_down")
+	elif player_id == 2:
+		# Joueur 2: Manette (joystick analogue ou boutons)
+		input_axis.x = Input.get_axis("ui_left", "ui_right")
+		input_axis.y = Input.get_axis("ui_up", "ui_down")
+	
+	# Normaliser pour éviter le mouvement diagonal plus rapide
+	input_axis = input_axis.normalized()
+
+func _apply_movement(delta):
+	if input_axis != Vector2.ZERO:
+		velocity = velocity.lerp(input_axis * speed, acceleration * delta)
+		current_direction = input_axis
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, acceleration * delta)
+
+func _update_animation():
+	if animated_sprite == null:
+		return
+	
+	if velocity.length() > 0:
+		# Jouer l'animation de marche
+		if animated_sprite.animation != "walk":
+			animated_sprite.play("walk")
+	else:
+		# Jouer l'animation idle
+		if animated_sprite.animation != "idle":
+			animated_sprite.play("idle")
+
+func set_in_dialogue(value: bool):
+	in_dialogue = value
+	if in_dialogue:
+		velocity = Vector2.ZERO

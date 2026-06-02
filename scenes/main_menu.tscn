@@ -1,24 +1,49 @@
-[gd_scene format=3 uid="uid://ces41xh53hwyl"]
+[gd_scene load_steps=2 format=3 uid="uid://dp20qvkrdpd7hyvr1"]
 
-[ext_resource type="Script" uid="uid://dxuot8kw2nrkb" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd"]
 
-[node name="MainMenu" type="Node2D" unique_id=2118642295]
-script = ExtResource("1_l6cm7")
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_left = 0.0
+anchors_top = 0.0
+anchors_right = 1.0
+anchors_bottom = 1.0
+script = ExtResource("main_menu.gd")
 
-[node name="Label" type="Label" parent="." unique_id=518871021]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_left = 0.0
+anchors_top = 0.0
+anchors_right = 1.0
+anchors_bottom = 1.0
+color = Color(0.2, 0.2, 0.25, 1.0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_left = 0.5
+anchors_top = 0.5
+anchors_right = 0.5
+anchors_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "RATZ ODYSSEY"
 
-[node name="Solo" type="Button" parent="." unique_id=1002743389]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="SoloButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 text = "Solo"
+custom_minimum_size = Vector2(150, 50)
 
-[node name="Multi" type="Button" parent="." unique_id=1510332166]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Multi"
+[node name="MultiButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multijoueur"
+custom_minimum_size = Vector2(150, 50)
 
-[connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
-[connection signal="pressed" from="Multi" to="." method="_on_multi_pressed"]
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quitter"
+custom_minimum_size = Vector2(150, 50)

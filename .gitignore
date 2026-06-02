@@ -1,0 +1,35 @@
+# Godot-specific ignores
+.godot/
+*.translation
+*.pot
+*.gd.import
+*.tscn.import
+*.tres.import
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IDEs
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Temporary files
+*.tmp
+*.bak
+
+# OS-specific
+Thumbs.db
+.directory
+
+# User settings
+user_settings.json
