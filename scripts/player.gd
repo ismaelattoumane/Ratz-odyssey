@@ -11,6 +11,9 @@ var current_direction: Vector2 = Vector2.DOWN
 
 var in_dialogue: bool = false
 
+var debug_input_axis: Vector2 = Vector2.ZERO
+var debug_velocity: Vector2 = Vector2.ZERO
+
 func _physics_process(delta):
 	if in_dialogue:
 		velocity = Vector2.ZERO
@@ -34,6 +37,7 @@ func _handle_input():
 	
 	# Normaliser pour éviter le mouvement diagonal plus rapide
 	input_axis = input_axis.normalized()
+	debug_input_axis = input_axis
 
 func _apply_movement(delta):
 	if input_axis != Vector2.ZERO:
@@ -41,6 +45,8 @@ func _apply_movement(delta):
 		current_direction = input_axis
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, acceleration * delta)
+
+	debug_velocity = velocity
 
 func set_in_dialogue(value: bool):
 	in_dialogue = value

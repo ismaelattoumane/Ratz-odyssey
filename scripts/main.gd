@@ -9,6 +9,7 @@ var dialogue_system: DialogueSystem
 
 @onready var npcs_container = $NPCs
 @onready var dialogue_ui = $DialogueUI
+@onready var debug_label = $DebugLabel
 
 func _ready():
 	dialogue_system = DialogueSystem.new()
@@ -46,6 +47,9 @@ func _setup_camera():
 			camera.global_position = center
 
 func _process(_delta):
+	if debug_label != null and player1 != null:
+		debug_label.text = "player pos=%s in_dialogue=%s player_id=%s" % [str(player1.global_position), str(player1.in_dialogue), str(player1.player_id)]
+	
 	if camera != null:
 		if GameManager.game_mode == "solo" and player1 != null:
 			camera.global_position = player1.global_position.lerp(camera.global_position, 0.1)

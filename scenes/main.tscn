@@ -16,6 +16,16 @@ anchors_bottom = 1.0
 layout_mode = 1
 script = ExtResource("2")
 
+[node name="DebugLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_left = 0.0
+anchors_top = 0.0
+anchors_right = 0.0
+anchors_bottom = 0.0
+offset_left = 10.0
+offset_top = 10.0
+text = ""
+
 [node name="PanelContainer" type="PanelContainer" parent="DialogueUI"]
 offset_left = 100.0
 offset_top = 500.0
