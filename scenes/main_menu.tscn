@@ -1,49 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp20qvkrdpd7hyvr1"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1"]
+[gd_scene load_steps=2 format=3 uid="uid://sg45iords1vo"]
+
+[ext_resource type="Script" uid="uid://b3w6rrccqlyaa" path="res://scripts/main_menu.gd" id="1"]
 
 [node name="MainMenu" type="Control"]
-anchors_left = 0.0
-anchors_top = 0.0
-anchors_right = 1.0
-anchors_bottom = 1.0
-layout_mode = 1
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1")
 
 [node name="BG" type="ColorRect" parent="."]
-anchors_left = 0.0
-anchors_top = 0.0
-anchors_right = 1.0
-anchors_bottom = 1.0
 layout_mode = 1
 color = Color(0.2, 0.2, 0.25, 1)
 
 [node name="VBox" type="VBoxContainer" parent="."]
-anchors_left = 0.5
-anchors_top = 0.5
-anchors_right = 0.5
-anchors_bottom = 0.5
-offset_left = -75.0
-offset_top = -75.0
-offset_right = 75.0
-offset_bottom = 75.0
 layout_mode = 1
+offset_right = 150.0
+offset_bottom = 212.0
 
 [node name="Label" type="Label" parent="VBox"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "RATZ ODYSSEY"
-custom_minimum_size = Vector2(150, 50)
 
 [node name="SoloButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Solo"
-custom_minimum_size = Vector2(150, 50)
 
 [node name="MultiButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Multijoueur"
-custom_minimum_size = Vector2(150, 50)
 
 [node name="QuitButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quitter"
-custom_minimum_size = Vector2(150, 50)
